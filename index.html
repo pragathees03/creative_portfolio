@@ -502,10 +502,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 4re
           </a>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleForm(event)">
-        <input class="form-input" type="text" placeholder="Your name" required>
-        <input class="form-input" type="email" placeholder="Your email" required>
-        <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+      <form class="contact-form" action="https://formspree.io/f/xqenvjqr" method="POST" onsubmit="handleForm(event)">
+        <input class="form-input" type="text" name="name" placeholder="Your name" required>
+        <input class="form-input" type="email" name="email" placeholder="Your email" required>
+        <textarea class="form-textarea" name="message" placeholder="Tell me about your project..."></textarea>
         <button type="submit" class="form-btn">Send Message →</button>
         <p id="form-msg" style="font-size:.85rem;color:var(--accent);display:none">Message sent! I'll be in touch soon.</p>
       </form>
@@ -778,10 +778,8 @@ async function render3DModelCards(){
 
 // Form
 function handleForm(e){
-  e.preventDefault();
   const msg=document.getElementById('form-msg');
   msg.style.display='block';
-  e.target.reset();
   setTimeout(()=>msg.style.display='none',4000);
 }
 
