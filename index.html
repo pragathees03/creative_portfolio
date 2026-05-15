@@ -348,17 +348,13 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 4re
   </div>
 
   <!-- VIDEO -->
-  <div class="work-panel" id="panel-video">
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
-    <div class="video-card"><div class="card-ph" style="height:100%"><div class="play-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="5,3 19,12 5,21"/></svg></div><div class="card-ph-label" style="margin-top:1rem"></div></div><div class="card-overlay"><div class="card-overlay-title"></div><div class="card-overlay-cat"></div></div></div>
+  <div class="work-panel" id="panel-video" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center;">
+    <div style="max-width: 500px;">
+      <div style="font-size: 3rem; margin-bottom: 1.5rem;">🎬</div>
+      <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--text); margin-bottom: 1rem;">Complete Portfolio on Google Drive</h3>
+      <p style="font-size: 1rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.8;">View my complete collection of video edits, motion graphics, posters, graphic designs, and 3D models on Google Drive.</p>
+      <a href="https://drive.google.com/drive/folders/1wQlYq05ehRAlDBUKKABUwtiYd4MLmNuk?usp=sharing" target="_blank" style="display: inline-block; background: var(--accent); color: #fff; padding: 0.85rem 2.2rem; border-radius: 2px; font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 40px rgba(255,92,0,.35)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">View Full Portfolio on Drive →</a>
+    </div>
   </div>
 
   <!-- 3D -->
@@ -592,15 +588,20 @@ function loadMoreWork(){
       revealPosterCards(panel,8);
       return;
     }
-    addPosterCards(panel,8);
+    // Only add empty slots if we haven't reached the total real posters yet
+    const currentCards=panel.querySelectorAll('.poster-card').length;
+    if(currentCards < totalRealPosters){
+      addPosterCards(panel,8);
+    }
     return;
   }
   if(panel.id==='panel-video'){
-    addVideoCards(panel,6);
+    // Videos are on Google Drive, no action needed
     return;
   }
   if(panel.id==='panel-3d'){
-    addModelCards(panel,4);
+    // 3D models are already fully loaded from folder, don't add empty slots
+    return;
   }
 }
 
@@ -624,6 +625,7 @@ function addPosterCards(panel,count){
 const posterFolder='assets/images/posters/';
 const posterCount=20;
 const posterExtensions=['.jpg','.png','.jpeg','.webp'];
+let totalRealPosters=0;
 
 function fileNameMatchesPosterExtension(fileName){
   const name=fileName.toLowerCase();
@@ -689,6 +691,7 @@ async function renderPosterCards(){
   if(!panel) return;
   panel.innerHTML='';
   const posterFiles = await fetchPosterFiles();
+  totalRealPosters = posterFiles.length > 0 ? posterFiles.length : posterCount;
   const cards = posterFiles.length
     ? await Promise.all(posterFiles.map((file,index)=>createPosterCard(file,index+1)))
     : await Promise.all(Array.from({length:posterCount},(_,i)=>createPosterCard(null,i+1)));
@@ -729,6 +732,50 @@ function addModelCards(panel,count){
   }
 }
 
+// 3D Models
+const modelFolder='assets/images/3d-renders/';
+const modelExtensions=['.jpg','.png','.jpeg','.webp'];
+
+function fileNameMatches3DExtension(fileName){
+  const name=fileName.toLowerCase();
+  return modelExtensions.some(ext => name.endsWith(ext));
+}
+
+async function fetch3DModelFiles(){
+  try {
+    const response = await fetch(modelFolder);
+    if(!response.ok) return [];
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html,'text/html');
+    const files = [...doc.querySelectorAll('a')]
+      .map(a => a.getAttribute('href'))
+      .filter(Boolean)
+      .filter(h => !h.endsWith('/'))
+      .filter(fileNameMatches3DExtension)
+      .map(decodeURIComponent);
+    return [...new Set(files)].sort((a,b)=>a.localeCompare(b, undefined, {numeric:true, sensitivity:'base'}));
+  } catch {
+    return [];
+  }
+}
+
+async function render3DModelCards(){
+  const panel=document.getElementById('panel-3d');
+  if(!panel) return;
+  const modelFiles = await fetch3DModelFiles();
+  if(modelFiles.length === 0) return;
+  
+  panel.innerHTML='';
+  modelFiles.forEach((file, index) => {
+    const card=document.createElement('div');
+    card.className='model-card';
+    const title=`3D Model ${index+1}`;
+    card.innerHTML=`<img src="${modelFolder+file}" alt="${title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;"><div class="card-overlay"><div class="card-overlay-title">${title}</div><div class="card-overlay-cat">3D Render</div></div>`;
+    panel.appendChild(card);
+    bindCursorHover(card);
+  });
+}
+
 // Form
 function handleForm(e){
   e.preventDefault();
@@ -739,6 +786,7 @@ function handleForm(e){
 }
 
 renderPosterCards();
+render3DModelCards();
 </script>
 </body>
 </html>
